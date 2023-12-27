@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistem iInformsasi Data barang</title>
+</head>
+<body>
+  <div class="container-biru">
+    <h1>Sistem Informasi Pelanggan</h1>
+  </div>
+  <main>
+    <div class="container-orange">
+      <div class="link">
+        <a href="sabri.html">data barang</a>
+        <a href="datatr.html">data transaksi</a>
+        <a href="datapelanggan.html">data pelanggan</a>
+      </div>
+    </div>
+    <div class="container-hijau">
+      <h2>Data Pelanggan</h2>
+      <div class="input">
+        <p>Kode Pelanggan</p>
+        <input type="text" id="kode_pelanggan">
+      </div>
+      <div class="input">
+        <p>Nama Pelanggan</p>
+        <input type="text" id="nama_pelanggan">
+      </div>
+      <div class="input">
+        <p>Telp</p>
+        <input type="text" id="telp_pelanggan">
+      </div>
+      <button onclick="prosesData()">Proses</button>
+      
+      <!-- table -->
+      <table id="pelangganTable">
+        <thead>
+          <tr>
+            <th>Kode Pelanggan</th>
+            <th>Nama Pelanggan</th>
+            <th>Telp</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+      </table>
+      <!-- table -->
+    </div>
+  </main>
+  <script>
+    function prosesData() {
+      // Get input values
+      var kodePelanggan = document.getElementById("kode_pelanggan").value;
+      var namaPelanggan = document.getElementById("nama_pelanggan").value;
+      var telpPelanggan = document.getElementById("telp_pelanggan").value;
+
+      // Create a new row
+      var newRow = document.createElement("tr");
+      newRow.innerHTML = "<td>" + kodePelanggan + "</td><td>" + namaPelanggan + "</td><td>" + telpPelanggan + "</td>";
+
+      // Append the new row to the table
+      var tableBody = document.querySelector("#pelangganTable tbody");
+      tableBody.appendChild(newRow);
+    }
+  </script>
+</body>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .container-biru{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: rgb(114, 130, 160);
+  }
+  main{
+    display: flex;
+  }
+  .container-orange{
+    background-color: rgb(58, 53, 51);
+    flex: 1;
+    padding: 12px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .container-orange a{
+    display: block;
+    text-align: center;
+    line-height: 4vh;
+    color: white;
+    text-decoration: none;
+  }
+  .container-hijau{
+    background-color: rgb(129, 147, 129);
+    flex: 3;
+    padding: 12px;
+  }
+  .container-hijau h2{
+    text-align: center;
+    margin-bottom: 20px;
+
+  }
+  .container-hijau .input{
+    
+    display: flex;
+    width: 55%;
+    margin: auto;
+   
+    justify-content: center;
+  }
+  .container-hijau .input p{
+    width: 20%;
+    margin: 4px 0;
+  }
+  .container-hijau .input input{
+  margin: 4px 0;
+  padding: 4px;
+  }
+  button{
+    padding: 8px 22px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 12px;
+  }
+  table{
+    
+    border: none;
+    padding: 12px;
+    width: 80%;
+    margin: auto;
+  }
+  thead{
+    margin: 4px;
+    background-color: white;
+  }
+  tr{
+    background-color: white;
+  }
+
+</style>
+</html>
+

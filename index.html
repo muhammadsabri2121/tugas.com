@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistem iInformsasi Data barang</title>
+</head>
+<body>
+  <div class="container-biru">
+    <h1>Sistem Informasi Barang</h1>
+  </div>
+  <main>
+    <div class="container-orange">
+      <div class="link">
+        <a href="sabri.html">data barang</a>
+        <a href="datatr.html">data transaksi</a>
+        <a href="datapelanggan.html">data pelanggan</a>
+      </div>
+    </div>
+    <div class="container-hijau">
+      <h2>Data transaksi</h2>
+      <div class="input">
+        <p>No Faktur</p>
+        <input type="text" id="no_faktur">
+      </div>
+      <div class="input">
+        <p>Kode Barang</p>
+        <input type="text" id="kode_barang">
+      </div>
+      <div class="input">
+        <p>Harga Jual</p>
+        <input type="text" id="harga_jual">
+      </div>
+      <div class="input">
+        <p>Jumlah Jual</p>
+        <input type="text" id="jumlah_jual">
+      </div>
+      <button onclick="prosesData()">Proses</button>
+      
+      <!-- table -->
+      <table id="barangTable">
+        <thead>
+          <tr>
+            <th>No Faktur</th>
+            <th>Kode Barang</th>
+            <th>Harga Jual</th>
+            <th>Jumlah Jual</th>
+            <th>Total</th>
+            <th>Diskon</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+      </table>
+      <!-- table -->
+    </div>
+  </main>
+  <script>
+    function prosesData() {
+      // Get input values
+      var noFaktur = document.getElementById("no_faktur").value;
+      var kodeBarang = document.getElementById("kode_barang").value;
+      var hargaJual = parseFloat(document.getElementById("harga_jual").value);
+      var jumlahJual = parseFloat(document.getElementById("jumlah_jual").value);
+
+      // Calculate total
+      var total = hargaJual * jumlahJual;
+
+      // Apply discount condition
+      var diskon = 0;
+      if ((kodeBarang === "B01" || kodeBarang === "B02") && jumlahJual > 10) {
+        diskon = 0.05 * total;
+      }
+
+      // Create a new row
+      var newRow = document.createElement("tr");
+      newRow.innerHTML = "<td>" + noFaktur + "</td><td>" + kodeBarang + "</td><td>" + hargaJual + "</td><td>" + jumlahJual + "</td><td>" + total + "</td><td>" + diskon + "</td>";
+
+      // Append the new row to the table
+      var tableBody = document.querySelector("#barangTable tbody");
+      tableBody.appendChild(newRow);
+    }
+  </script>
+</body>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .container-biru{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: rgb(97, 131, 195);
+  }
+  main{
+    display: flex;
+  }
+  .container-orange{
+    background-color: rgb(255, 128, 0);
+    flex: 1;
+    padding: 12px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .container-orange a{
+    display: block;
+    text-align: center;
+    line-height: 4vh;
+    color: white;
+    text-decoration: none;
+  }
+  .container-hijau{
+    background-color: rgb(128, 0, 62);
+    flex: 3;
+    padding: 12px;
+  }
+  .container-hijau h2{
+    text-align: center;
+    margin-bottom: 20px;
+
+  }
+  .container-hijau .input{
+    
+    display: flex;
+    width: 55%;
+    margin: auto;
+   
+    justify-content: center;
+  }
+  .container-hijau .input p{
+    width: 20%;
+    margin: 4px 0;
+  }
+  .container-hijau .input input{
+  margin: 4px 0;
+  padding: 4px;
+  }
+  button{
+    padding: 8px 22px;
+    background-color: rgb(159, 134, 134);
+    border: none;
+    cursor: pointer;
+    margin-bottom: 12px;
+  }
+  table{
+    
+    border: none;
+    padding: 12px;
+    width: 80%;
+    margin: auto;
+  }
+  thead{
+    margin: 4px;
+    background-color: white;
+  }
+  tr{
+    background-color: white;
+  }
+
+</style>
+</html>
